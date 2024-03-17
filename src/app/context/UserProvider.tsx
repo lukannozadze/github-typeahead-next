@@ -1,13 +1,15 @@
-'use client'
+"use client";
 import { ReactNode, createContext, useContext, useRef, useState } from "react";
-//import { useGithubUsers } from "../service/github";
+import { useDebouncedCallback } from "use-debounce";
+import useGithubUsers from "../service/github";
+import { GithubUser } from "../service/types";
 
 type PropsType = {
   children: ReactNode;
 };
 type ContextType = {
-  //users: GithubUser[] | undefined;
-  //search: (username: string) => void;
+  users: GithubUser[] | undefined;
+  search: (username: string) => void;
   setMaxUsersPerPage: React.Dispatch<React.SetStateAction<number>>;
   //isLoading: boolean;
   //isError: boolean;
@@ -16,8 +18,8 @@ type ContextType = {
 //type Timer = ReturnType<typeof setTimeout>;
 
 const Context = createContext<ContextType>({
-  //users: undefined,
-  //search: () => {},
+  users: undefined,
+  search: () => {},
   setMaxUsersPerPage: () => {},
   //isLoading: false,
   //isError: false,
@@ -26,28 +28,24 @@ const Context = createContext<ContextType>({
 
 function UserProvider({ children }: PropsType) {
   const [maxUsersPerPage, setMaxUsersPerPage] = useState(5);
-  //const timeoutRef = useRef<Timer | null>(null);
-  //const userMutations = useGithubUsers();
-  //const users = userMutations.data?.items;
+  const userMutations = useGithubUsers();
+  const users = userMutations.data?.items;
   //const isLoading = userMutations.isPending;
   //const isError = userMutations.isError;
 
-  //const search = (username: string) => {
-    //timeoutRef && clearTimeout(timeoutRef.current as Timer);
-    //timeoutRef.current = setTimeout(() => {
-      //if (username !== "") userMutations.mutateAsync({ username });
-   // }, 500);
-  //};
+  const search = useDebouncedCallback((username: string) => {
+    if (username !== "") userMutations.mutateAsync({ username });
+  }, 500);
 
   const contextValue: ContextType = {
-    //users,
-    //search,
+    users,
+    search,
     //isLoading,
     //isError,
     maxUsersPerPage,
     setMaxUsersPerPage,
   };
-   return <Context.Provider value={contextValue}>{children}</Context.Provider>
+  return <Context.Provider value={contextValue}>{children}</Context.Provider>;
 }
 
 export default UserProvider;

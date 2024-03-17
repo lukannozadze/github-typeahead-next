@@ -1,12 +1,14 @@
 "use client";
+import { useUserProvider } from "@/app/context/UserProvider";
 import { Input } from "@/app/ui/input";
 import { ChangeEvent } from "react";
 
 export default function UserSearchForm() {
-  
+   const {search} = useUserProvider();
   const searchInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    //search(e.target.value);
-    console.log(e.target.value)
+    search(e.target.value);
+
+    
   };
 
   return (
