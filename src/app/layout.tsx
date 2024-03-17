@@ -1,4 +1,5 @@
-import UserProvider from "@/provider/UserProvider";
+import QueryProvider from "./context/QueryProvider";
+import UserProvider from "./context/UserProvider";
 import "./globals.css";
 export const metadata = {
   title: "Next.js",
@@ -13,7 +14,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="">
-        <UserProvider>{children}</UserProvider>
+        <UserProvider>
+          <QueryProvider>{children}</QueryProvider>
+        </UserProvider>
       </body>
     </html>
   );

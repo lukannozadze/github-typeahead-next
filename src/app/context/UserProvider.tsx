@@ -1,3 +1,4 @@
+'use client'
 import { ReactNode, createContext, useContext, useRef, useState } from "react";
 //import { useGithubUsers } from "../service/github";
 
@@ -46,7 +47,7 @@ function UserProvider({ children }: PropsType) {
     maxUsersPerPage,
     setMaxUsersPerPage,
   };
-   return <Context.Provider value={contextValue}></Context.Provider>
+   return <Context.Provider value={contextValue}>{children}</Context.Provider>
 }
 
 export default UserProvider;
