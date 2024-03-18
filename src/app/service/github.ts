@@ -13,6 +13,9 @@ export default function useGithubUsers() {
       const response = await fetch(
         `${BASE_URL}/search/users?q=` + payload.username
       );
+      if(!response.ok){
+        throw new Error('Something Went Wrong')
+      }
       return response.json() as Promise<GithubUsers>;
     },
   });
