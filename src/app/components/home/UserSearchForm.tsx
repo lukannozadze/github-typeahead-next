@@ -2,6 +2,7 @@
 import { useUserProvider } from "@/app/context/UserProvider";
 import { Input } from "@/app/ui/input";
 import { ChangeEvent } from "react";
+import UserSelect from "./UserSelect";
 
 export default function UserSearchForm() {
    const {search} = useUserProvider();
@@ -18,7 +19,7 @@ export default function UserSearchForm() {
         placeholder="Enter Username"
         onChange={searchInputHandler}
       />
-       {/* <UserSelect /> */}
+       <UserSelect />
     </form>
   );
 }

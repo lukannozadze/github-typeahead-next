@@ -3,19 +3,19 @@ import { useUserProvider } from "@/app/context/UserProvider";
 import Link from "next/link";
 import Image from 'next/image'
 import LoadingSkeleton from "./LoadingSkeleton";
-//import { Meteors } from "../ui/meteors";
+
 
 export default function UserListCard() {
-  const {users} = useUserProvider();
-  //const selectedUsers = users?.slice(0, maxUsersPerPage);
+  const {users,isLoading,maxUsersPerPage} = useUserProvider();
+  const selectedUsers = users?.slice(0, maxUsersPerPage);
 
   return (
     <section className="flex flex-col gap-8 items-center">
-      {true ? (
+      {isLoading ? (
         <LoadingSkeleton />
       ) : (
         <ul className="flex flex-col gap-8">
-          {users?.map((user) => {
+          {selectedUsers?.map((user) => {
             return (
               <li key={user.node_id}>
                <Link href={user.node_id}>
@@ -33,7 +33,6 @@ export default function UserListCard() {
                     height={80}
                     className="rounded-full"
                   />
-                  {/* <Meteors number={30} /> */}
                 </div>
                </Link>
               </li>

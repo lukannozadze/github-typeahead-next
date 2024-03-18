@@ -11,7 +11,7 @@ type ContextType = {
   users: GithubUser[] | undefined;
   search: (username: string) => void;
   setMaxUsersPerPage: React.Dispatch<React.SetStateAction<number>>;
-  //isLoading: boolean;
+  isLoading: boolean;
   //isError: boolean;
   maxUsersPerPage: number;
 };
@@ -19,18 +19,18 @@ type ContextType = {
 
 const Context = createContext<ContextType>({
   users: undefined,
+  isLoading: false,
+  maxUsersPerPage: 5,
+  //isError: false,
   search: () => {},
   setMaxUsersPerPage: () => {},
-  //isLoading: false,
-  //isError: false,
-  maxUsersPerPage: 5,
 });
 
 function UserProvider({ children }: PropsType) {
   const [maxUsersPerPage, setMaxUsersPerPage] = useState(5);
   const userMutations = useGithubUsers();
   const users = userMutations.data?.items;
-  //const isLoading = userMutations.isPending;
+  const isLoading = userMutations.isPending;
   //const isError = userMutations.isError;
 
   const search = useDebouncedCallback((username: string) => {
@@ -40,7 +40,7 @@ function UserProvider({ children }: PropsType) {
   const contextValue: ContextType = {
     users,
     search,
-    //isLoading,
+    isLoading,
     //isError,
     maxUsersPerPage,
     setMaxUsersPerPage,

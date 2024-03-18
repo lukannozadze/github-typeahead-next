@@ -2,7 +2,6 @@ import { Skeleton } from "@/app/ui/skeleton";
 function LoadingSkeleton() {
   return (
     <div>
-
     <div className="flex items-center space-x-4 mb-8">
       <Skeleton className="h-12 w-12 bg-[#1E2A47] rounded-full" />
       <div className="space-y-2">
