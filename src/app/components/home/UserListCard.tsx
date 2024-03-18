@@ -2,7 +2,7 @@
 import { useUserProvider } from "@/app/context/UserProvider";
 import Link from "next/link";
 import Image from 'next/image'
-//import LoadingSkeleton from "../shared/LoadingSkeleton";
+import LoadingSkeleton from "./LoadingSkeleton";
 //import { Meteors } from "../ui/meteors";
 
 export default function UserListCard() {
@@ -11,9 +11,8 @@ export default function UserListCard() {
 
   return (
     <section className="flex flex-col gap-8 items-center">
-      {false ? (
-        //<LoadingSkeleton />
-        <p>Loadgin...</p>
+      {true ? (
+        <LoadingSkeleton />
       ) : (
         <ul className="flex flex-col gap-8">
           {users?.map((user) => {
