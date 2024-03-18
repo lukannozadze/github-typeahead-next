@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode, createContext, useContext, useRef, useState } from "react";
+import { ReactNode, createContext, useContext, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import useGithubUsers from "../service/github";
 import { GithubUser } from "../service/types";
