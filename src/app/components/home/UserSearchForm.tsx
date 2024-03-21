@@ -2,7 +2,7 @@
 import { useUserProvider } from "@/app/context/UserProvider";
 import { Input } from "@/app/ui/input";
 import { ChangeEvent } from "react";
-import UserSelect from "@/app/components/home/UserSelect";
+import UserSelect from "@/app/components/home/userselect";
 
 export default function UserSearchForm() {
   const { search } = useUserProvider();

@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
-import UserListCard from "./components/home/UserListCard";
-import UserSearchForm from "./components/home/UserSearchForm";
+import UserListCard from "@/app/components/home/userlistcard";
+import UserSearchForm from "@/app/components/home/usersearchform";
 import { useUserProvider } from "./context/UserProvider";
 import { Toaster } from "./ui/toast/toaster";
 import { toast } from "./ui/toast/use-toast";

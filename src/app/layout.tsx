@@ -1,4 +1,4 @@
-import QueryProvider from "@/app/context/Queryprovider";
+import QueryProvider from "@/app/context/QueryProvider";
 import UserProvider from "@/app/context/UserProvider";
 import "./globals.css";
 export const metadata = {
