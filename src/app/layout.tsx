@@ -1,5 +1,5 @@
-import QueryProvider from "./context/QueryProvider";
-import UserProvider from "./context/UserProvider";
+import QueryProvider from "@/app/context/Queryprovider";
+import UserProvider from "@/app/context/UserProvider";
 import "./globals.css";
 export const metadata = {
   title: "Github Typeahead Next",

@@ -1,8 +1,8 @@
-'use client'
+"use client";
 import { useUserProvider } from "@/app/context/UserProvider";
 
 function UseGenerateSelectOptions() {
-    const { users } = useUserProvider();
+  const { users } = useUserProvider();
   const usersQuantity = users?.length;
   let selectUsers = 5;
   const selectItemsArr: number[] = [];

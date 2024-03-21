@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useEffect } from "react";
 import UserListCard from "./components/home/UserListCard";
 import UserSearchForm from "./components/home/UserSearchForm";
@@ -10,7 +10,6 @@ export default function Home() {
   const { isError } = useUserProvider();
 
   useEffect(() => {
-    console.log('error')
     toast({
       variant: "destructive",
       title: "Uh oh! Something went wrong.",
@@ -21,8 +20,8 @@ export default function Home() {
   return (
     <>
       <UserSearchForm />
-      <UserListCard/>
-       {isError && <Toaster/>}
+      <UserListCard />
+      {isError && <Toaster />}
     </>
   );
 }
